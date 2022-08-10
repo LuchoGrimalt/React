@@ -1,16 +1,15 @@
 import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
-import "./style.css";
+import ItemList from "../ItemList/ItemList";
+//import { getProducts, getProductsByCategory } from '../Products/asyncmock';
+//import { useParams } from 'react-router-dom';
 
 
-
-export default function ItemListContainer(){
-    return(
-            <div className="Contenedor">
-                <h4>Aproveche las ofertas de invierno 2022</h4>
-                 <></>
-                <ItemCount stock={'5'} initial={'1'} /> 
-                <button type="button" >Agregar al carrito</button>
-            </div>
-    )
+const ItemListContainer = () =>{
+  return(
+    <div>
+      <ItemList />
+    </div>
+  )
 }
+
+export default ItemListContainer;
