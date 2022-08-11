@@ -8,6 +8,7 @@ import CarWidget from '../CarWidget/CarWidget';
 export default function Navbar() {
   return (
     <div className="navbar bg-warning" >
+        <>🐣</>
         <ButtonGroup size= "lg" claseName ="mb-2">
         <Button bg="secondary">Home</Button>
         <Button bg="secondary">Niñ@s</Button>

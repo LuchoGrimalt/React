@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import getFetch from "../Products/Products";
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Item from "../Item/Item";
 
 

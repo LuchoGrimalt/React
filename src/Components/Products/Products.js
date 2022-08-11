@@ -3,7 +3,7 @@ const products = [
     {
         id: 1,
         name: 'Gorro',
-        category: 'Womens Footwear',
+        category: 'Accesorios',
         price: 99.00,
         stock: 5,
         img: "../Images/gorro.jpg"
@@ -11,7 +11,7 @@ const products = [
     {
         id: 2,
         name: 'pantalon',
-        category: 'Womens Footwear',
+        category: 'Vestimenta',
         price: 42.00,
         stock: 4,
         img: "../Images/pantalon.jpg"
@@ -19,7 +19,7 @@ const products = [
     {
         id: 3,
         name: 'remera',
-        category: 'Mens Footwear',
+        category: 'Vestimenta',
         price: 34.00,
         stock: 12,
         img: "../Images/remera.jpg"
@@ -27,7 +27,7 @@ const products = [
     {
         id: 4,
         name: 'medias',
-        category: 'Mens Footwear',
+        category: 'Vestimenta',
         price: 19.00,
         stock: 6,
         img: "../Images/medias.jpg"
@@ -35,7 +35,7 @@ const products = [
     {
         id: 5,
         name: 'bufanda',
-        category: 'Mens Footwear',
+        category: 'Accesorios',
         price: 19.00,
         stock: 0,
         img: "../Images/bufanda.jpg"
