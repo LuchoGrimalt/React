@@ -1,13 +1,22 @@
+import { useEffect, useState } from "react";
 import React from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-//import { getProducts, getProductsByCategory } from '../Products/asyncmock';
-//import { useParams } from 'react-router-dom';
+import { getProductsByCategory } from "../Products/Products";
+import { useParams } from "react-router-dom";
 
+export default function ItemDetailContainer() {
+  const [prod, setProd] = useState([]);
+  const { detailId } = useParams();
 
-export default function ItemDetailContainer (prod){
-  return(
-    <div className="detail-conntainer">
-        <ItemDetail prodList={prod}/>
+  useEffect(() => {
+    getProductsByCategory(detailId)
+      .then(prod => setProd(prod))
+      .catch(error => console.log(error));
+  }, [detailId]);
+
+  return (
+    <div className="item-detail-container">
+      <ItemDetail {...prod} />
     </div>
-  )
+  );
 }

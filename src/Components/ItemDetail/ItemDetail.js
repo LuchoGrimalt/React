@@ -1,34 +1,27 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import getFetch from "../Products/Products";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-//import Detail from "../Detail/Detail";
-import Item from "../Item/Item";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import ItemCount from "../ItemCount/ItemCount";
 
+const ItemDetail = (props)=> {
+    return (
+        <Card style={{ width: "18rem", margin: "12px", padding: "8px" }}>
+          <Card.Img src={props.img} variant="top" />
+          <Card.Body>
+            <Card.Title>
+              <div>
+                <h2>{props.name}</h2>
+                <h6>Categoria: {props.category}</h6>
+                <h6>precio = ${props.price}</h6>
+                <h6>stockkkkkkkkkkkkkk {props.stock}</h6>
+                <ItemCount />
+              </div>
+            </Card.Title>
+            <Button variant="success">Agregar al carrito</Button>
+          </Card.Body>
+        </Card>
+      );
+    }
 
-export default function ItemDetail (props){
-    const [prod, setProd] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(()=>{
-        getFetch
-            .then ((resp)=> setProd (resp)) 
-            .catch (err => console.log(err))
-            .finally(()=> setLoading(false)) 
-    },[])
-
-    return(
-        <Container fluid className="container">
-            <Row className = "justify-content-md-center">
-                {loading? <h2>Cargando.....</h2> : 
-                prod.map(art=>{
-                    return(
-                        <Item key={art.id} {...art} />
-                        )
-                    })
-                }   
-            </Row>
-      </Container>
-    )
-}
+    export default ItemDetail;
+    

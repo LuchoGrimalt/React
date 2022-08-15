@@ -1,19 +1,23 @@
-import './App.css';
-import Navbar from './Components/Navbar/Nabvar';
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-//import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import "./App.css";
+import Navbar from "./Components/Navbar/Nabvar";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
+import ProdDetailPage from "./Pages/ProdDetailPage";
+import Home from "./Pages/Home";
+import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Navbar />
       <h2>Ofertas de invierno</h2>
-          <ItemDetailContainer />
-      {/* <ItemListContainer /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Categoria/:categoryId" element={<ProdDetailPage />} />
+        <Route path="/Detalle/:detailId" element={<ItemDetailContainer />} />
+      </Routes>
     </div>
   );
 }
 
-export default App;
