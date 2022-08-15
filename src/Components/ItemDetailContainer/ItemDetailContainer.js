@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { getProductsByCategory } from "../Products/Products";
+import { getProducts } from "../Products/Products";
 import { useParams } from "react-router-dom";
 
 export default function ItemDetailContainer() {
-  const [prod, setProd] = useState([]);
+  const [prod, setProd] = useState({});
   const { detailId } = useParams();
 
   useEffect(() => {
-    getProductsByCategory(detailId)
-      .then(prod => setProd(prod))
-      .catch(error => console.log(error));
-  }, [detailId]);
+    getProducts()
+    .then(prod => setProd(prod.find(
+      products=> products.id === parseInt(detailId)))
+    .catch(err=>console.log(err)))
+    }, [detailId]);
 
   return (
     <div className="item-detail-container">

@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 
-export default function ItemCount(props) {
+export default function ItemCount() {
   const [count, setCount] = useState(1);
+
+
   function addItem() {
-    count < props.stock  
+    count < 5  
       ? setCount(count + 1)
       : alert("Solo se pueden cargar hasta 5 unidades");
   }

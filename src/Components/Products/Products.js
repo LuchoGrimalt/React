@@ -55,25 +55,25 @@ const getFetch = new Promise((res, rej) => {
 export default getFetch;
 
 export const getProducts = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((res, rej) => {
     setTimeout(() => {
-      resolve(products);
-    }, 1000);
+      res(products);
+    }, 500);
   });
 };
 
 export const getProductsByCategory = (categoryId) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((res, rej) => {
     setTimeout(() => {
-      resolve(products.filter((prod) => prod.category === categoryId));
+      res(products.filter(prod => prod.category === categoryId));
     }, 500);
   });
 };
 
 export const getProductById = (id) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((res, rej) => {
     setTimeout(() => {
-      resolve(products.find((prod) => prod.id === id));
+      res(products.find(prod=> prod.id === id));
     }, 500);
   });
 };

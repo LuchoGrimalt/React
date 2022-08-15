@@ -12,8 +12,8 @@ const ItemDetail = (props)=> {
               <div>
                 <h2>{props.name}</h2>
                 <h6>Categoria: {props.category}</h6>
-                <h6>precio = ${props.price}</h6>
-                <h6>stockkkkkkkkkkkkkk {props.stock}</h6>
+                <h6>precio ${props.price}</h6>
+                <h6>stock {props.stock}</h6>
                 <ItemCount />
               </div>
             </Card.Title>
