@@ -11,8 +11,7 @@ export default function ItemDetailContainer() {
   useEffect(() => {
     getProducts()
     .then(prod => setProd(prod.find(
-      products=> products.id === parseInt(detailId)))
-    .catch(err=>console.log(err)))
+      products=> products.id === parseInt(detailId))))
     }, [detailId]);
 
   return (
