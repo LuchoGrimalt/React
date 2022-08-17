@@ -3,19 +3,21 @@ import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useCartContext } from "../../Cart/CartContext/CartContext";
 
-export default function ItemCount({initial, stock, onAddCart}) {
-  const [count, setCount] = useState(number(initial));
-  const [inStock, setInStock] = useState(stock);
+export default function ItemCount(props) {
+  const [count, setCount] = useState(1);
+  const [inStock, setInStock] = useState(props.stock);
   const { onAddCart } = useCartContext();
 
   useEffect(() => {
-    setInStock(stock);
-  }, [stock]);
+    setInStock(props.stock);
+  }, [props.stock]);
   
-  function addToCart() {onAddCart(count)}
+  function addToCart() {
+    onAddCart(count)
+  }
   
   function addItem() {
-    if (count < stock) {
+    if (count < props.stock) {
       setCount(count + 1);
       setInStock(inStock - 1);
     } else {
@@ -43,13 +45,8 @@ export default function ItemCount({initial, stock, onAddCart}) {
         +
       </Button>
 
-      <Button
-        onClick={() => {
-          addToCart();
-          addProdCart({ ...itemDataCount });
-        }}
-      >
-        Sumar al carrito
+      <Button onClick={addToCart}>
+      Agregar al 🛒
       </Button>
     </div>
   );

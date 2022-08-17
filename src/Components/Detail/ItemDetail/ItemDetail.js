@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ItemCount from "../../Detail/ItemCount/ItemCount";
-import { useCartContext } from "../../Cart/CartContext/CartContext";
+import { CartContext } from "../../Cart/CartContext/CartContext";
 
 const ItemDetail = ({img, name, price, id, category, initial, stock}) => {
-  const { addProdCart } = useCartContext();
+  const { addProdCart } = useContext(CartContext);
   const [prodtoCart, setProdToCart] = useState(false);
 
   const onAdd = (quantityToAdd) => {
@@ -30,7 +30,7 @@ const ItemDetail = ({img, name, price, id, category, initial, stock}) => {
             )}
           </div>
         </Card.Title>
-        <Button variant="success">Agregar al carrito</Button>
+        <Button variant="success"> 😄Terminar Compra</Button>
       </Card.Body>
     </Card>
   );
