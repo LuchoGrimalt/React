@@ -1,11 +1,9 @@
 import React from "react";
 import "./style.css";
 import { BsMinecart } from "react-icons/bs";
-import { useCartContext } from "../../../CartContext/CartContext";
 
 
 export default function CarWidget() {
-    const nameProd = useCartContext
   return (
     <div className="iconocart">
       <div className="enCarrito">0</div>

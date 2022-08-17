@@ -1,13 +1,13 @@
 import "./App.css";
-import Navbar from "./Components/Navbar/Nabvar";
+import Navbar from "./Components/Navbar/Navbar/Navbar";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import ProdDetailPage from "./Pages/ProdDetailPage";
 import Home from "./Pages/Home";
-import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
-import { CartProvider } from "./CartContext/CartContext";
-import Cart from "./Components/Cart/Cart";
+import ItemDetailContainer from "./Components/Detail/ItemDetailContainer/ItemDetailContainer";
+import { CartProvider } from "./Components/Cart/CartContext/CartContext";
+import Cart from "./Components/Cart/Cart/Cart";
 
 export default function App() {
   return (

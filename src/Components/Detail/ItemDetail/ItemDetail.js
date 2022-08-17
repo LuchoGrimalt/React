@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import ItemCount from "../../ItemCount/ItemCount";
-import { useCartContext } from "../../../CartContext/CartContext";
+import ItemCount from "../../Detail/ItemCount/ItemCount";
+import { useCartContext } from "../../Cart/CartContext/CartContext";
 
-const ItemDetail = ({img, name, price, id, category, stock}) => {
-  const [toCart, setCart] = useState(false);
+const ItemDetail = ({img, name, price, id, category, initial, stock}) => {
   const { addProdCart } = useCartContext();
-  const itemData = { img, name, price, id, category, stock };
+  const [prodtoCart, setProdToCart] = useState(false);
 
-  const onAdd = () => {
-    setCart(true);
-  };
+  const onAdd = (quantityToAdd) => {
+    addProdCart({ id, name, quantity: quantityToAdd, img, category, price});
+    setProdToCart(true)}
 
   return (
     <Card style={{ width: "18rem", margin: "12px", padding: "8px" }}>
@@ -24,10 +23,10 @@ const ItemDetail = ({img, name, price, id, category, stock}) => {
             <h6>Categoria: {category}</h6>
             <h6>precio ${price}</h6>
             <h6>stock {stock}</h6>
-            {toCart ? (
-              <Link to="/cart">Terminar compra</Link>
+            {prodtoCart ? (
+              <Link to="/cart">Sumado al carrito</Link>
             ) : (
-              <ItemCount initial={1} stock={stock} onAdd={onAdd} />
+              <ItemCount initial={initial} stock={stock} onAddCart={onAdd} />
             )}
           </div>
         </Card.Title>

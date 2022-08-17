@@ -1,4 +1,4 @@
-import ItemListContainer from "../Components/ItemListContainer/ItemListContainer";
+import ItemListContainer from "../Components/List/ItemListContainer/ItemListContainer";
 
 export default function Home() {
   return (

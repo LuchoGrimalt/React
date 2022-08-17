@@ -1,20 +1,21 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { useCartContext } from "../../CartContext/CartContext";
+import { useCartContext } from "../../Cart/CartContext/CartContext";
 
-export default function ItemCount(stock, itemData, onAdd) {
-  const [count, setCount] = useState(1);
+export default function ItemCount({initial, stock, onAddCart}) {
+  const [count, setCount] = useState(number(initial));
   const [inStock, setInStock] = useState(stock);
-  const itemDataCount = { ...itemData, count };
-  const { addProdCart } = useCartContext();
+  const { onAddCart } = useCartContext();
 
   useEffect(() => {
     setInStock(stock);
   }, [stock]);
-
+  
+  function addToCart() {onAddCart(count)}
+  
   function addItem() {
-    if (stock > 1) {
+    if (count < stock) {
       setCount(count + 1);
       setInStock(inStock - 1);
     } else {
@@ -27,16 +28,10 @@ export default function ItemCount(stock, itemData, onAdd) {
       setCount(count - 1);
       setInStock(inStock + 1);
     } else {
-      alert("Mínima catidad seleccionada");
+      alert("Mínima cantidad seleccionada");
     }
   }
 
-  function addToCart() {
-    if (count >= 1) {
-      setInStock(inStock - count);
-      setInStock(inStock);
-    }
-  }
 
   return (
     <div style={{ display: "flex", justifyContent: "space-evenly" }}>
