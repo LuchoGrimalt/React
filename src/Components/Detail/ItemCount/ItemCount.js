@@ -6,20 +6,22 @@ import { useCartContext } from "../../Cart/CartContext/CartContext";
 export default function ItemCount(props) {
   const [count, setCount] = useState(1);
   const [inStock, setInStock] = useState(props.stock);
-  const { onAddCart } = useCartContext();
+  const { addProdCart } = useCartContext();
 
   useEffect(() => {
     setInStock(props.stock);
   }, [props.stock]);
-  
+
   function addToCart() {
-    onAddCart(count)
+    addProdCart(count);
+    console.log(count);
   }
-  
+
   function addItem() {
     if (count < props.stock) {
       setCount(count + 1);
       setInStock(inStock - 1);
+      console.log(inStock);
     } else {
       alert("Sin más stock");
     }
@@ -29,25 +31,27 @@ export default function ItemCount(props) {
     if (count > 1) {
       setCount(count - 1);
       setInStock(inStock + 1);
+      console.log(inStock);
+      
     } else {
       alert("Mínima cantidad seleccionada");
     }
   }
 
-
   return (
-    <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-      <Button size="sm" onClick={removeItem}>
-        -
-      </Button>
-      {count}
-      <Button size="sm" onClick={addItem}>
-        +
-      </Button>
-
-      <Button onClick={addToCart}>
-      Agregar al 🛒
-      </Button>
+    <div className="row">
+      <div style={{display:"flex", justifyContent:"space-evenly", padding:"10px 0px" }}>
+        <Button size="sm" onClick={removeItem}>
+          -
+        </Button>
+        {count}
+        <Button size="sm" onClick={addItem}>
+          +
+        </Button>
+      </div>
+      <div>
+        <Button onClick={()=> addToCart(count)}>Agregar al 🛒</Button>
+      </div>
     </div>
   );
 }

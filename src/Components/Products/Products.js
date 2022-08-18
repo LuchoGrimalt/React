@@ -5,6 +5,7 @@ export const products = [
     category: "Accesorios",
     price: 99.0,
     stock: 5,
+    initial: 1,
     img: "../Images/gorro.jpg",
   },
   {
@@ -13,6 +14,7 @@ export const products = [
     category: "Ropa",
     price: 42.0,
     stock: 4,
+    initial: 1,
     img: "../Images/pantalon.jpg",
   },
   {
@@ -21,6 +23,7 @@ export const products = [
     category: "Ropa",
     price: 34.0,
     stock: 12,
+    initial: 1,
     img: "../Images/remera.jpg",
   },
   {
@@ -29,6 +32,7 @@ export const products = [
     category: "Ropa",
     price: 19.0,
     stock: 6,
+    initial: 1,
     img: "../Images/medias.jpg",
   },
   {
@@ -37,6 +41,7 @@ export const products = [
     category: "Accesorios",
     price: 19.0,
     stock: 4,
+    initial: 1,
     img: "../Images/bufanda.jpg",
   },
 ];
