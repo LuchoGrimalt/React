@@ -14,14 +14,14 @@ export default function ItemCount(props) {
 
   function addToCart() {
     addProdCart(count);
-    console.log(count);
+    console.log(`agregaste ${count} al carrito`);
   }
 
   function addItem() {
     if (count < props.stock) {
       setCount(count + 1);
       setInStock(inStock - 1);
-      console.log(inStock);
+      console.log(`quedan en stock ${inStock}`);
     } else {
       alert("Sin más stock");
     }
@@ -31,7 +31,7 @@ export default function ItemCount(props) {
     if (count > 1) {
       setCount(count - 1);
       setInStock(inStock + 1);
-      console.log(inStock);
+      console.log(`quedan en stock ${inStock}`);
       
     } else {
       alert("Mínima cantidad seleccionada");

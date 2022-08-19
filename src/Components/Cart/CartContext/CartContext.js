@@ -6,7 +6,7 @@ export const useCartContext = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [quantityInCart, setQuantityInCart] = useState(0);
+  //const [quantity, setQuantity] = useState(0);
 
   // vaciar carrito con array nuevo.
   const emptyCart = () => setCart([]);
@@ -14,7 +14,7 @@ export const CartProvider = ({ children }) => {
   // el prod ya estaba en el cart?
   const inCart = (id) => (cart.find((prod) => prod.id === id) ? true : false);
 
-  // Boorar formando un nuevo array sacando al elegido
+  // Borrar formando un nuevo array sacando al elegido
   const delProdCart = (id) => setCart(cart.filter((prod) => prod.id !== id));
 
   // Agregado condicional
@@ -36,6 +36,7 @@ export const CartProvider = ({ children }) => {
   const totalProd = () => {
     return cart.reduce((prev, act) => prev + act.quantity, 0);
   };
+
   //Finalizar compra
   const finalBuy = () => {
     return cart.length >= 1 ? (
@@ -43,6 +44,19 @@ export const CartProvider = ({ children }) => {
     ) : (
       " "
     );
+  };
+
+  // Subtotal de carrito
+  const totalPrice = () => {
+    return cart.reduce(
+      (subtotal, actual) => subtotal + actual.quantity * actual.price,
+      0
+    );
+  };
+
+  // Precio final de la compra
+  const totalBuy = () => {
+    cart.reduce((subtotal, prodActual) => subtotal + prodActual.quantity, 0);
   };
 
   return (
@@ -54,6 +68,9 @@ export const CartProvider = ({ children }) => {
         delProdCart,
         totalProd,
         finalBuy,
+        totalPrice,
+        totalBuy,
+        cart,
       }}
     >
       {children}

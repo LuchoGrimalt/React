@@ -1,21 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import CartItem from "../CartItem/CartItem";
 import { useCartContext } from "../CartContext/CartContext";
+import CartItem from "../CartItem/CartItem.js";
 
-const Cart = () => {
-  const { cart, finalPrice, finalBuy } =  useCartContext ;
+
+const Cart = (prod) => {
+  const { cart, totalPrice, finalBuy } =  useCartContext() ;
 
   return (
     <>
       {cart.length === 0 ? (
         <div className="w-auto shadow-lg rounded d-flex row">
-          <h3 className="text-dark text-center bg-warning">
+          <h3 className="text-dark text-center bg-warning ">
             Carrito Vacio 😕{" "}
           </h3>
           <Link to={"/"}>
-            <Button className="btn btn-info col-12">Volver al catálogo</Button>
+            <Button className="btn btn-info col-5">Volver al catálogo</Button>
           </Link>
         </div>
       ) : (
@@ -24,7 +25,7 @@ const Cart = () => {
         })
       )}
       <div>
-        <h4 className="cartTotal">Total: ${finalPrice()}</h4>
+        <h4 className="cartTotal">Total: ${totalPrice()}</h4>
         <span>{finalBuy()} </span>
       </div>
     </>

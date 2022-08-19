@@ -5,22 +5,17 @@ import Button from "react-bootstrap/Button";
 import ItemCount from "../../Detail/ItemCount/ItemCount";
 import { CartContext } from "../../Cart/CartContext/CartContext";
 
-export const ItemDetail = ({
-  img,
-  name,
-  price,
-  id,
-  category,
-  initial,
-  stock,
-}) => {
+export default function ItemDetail(props) {
+  const [prodToCart, setProdToCart] = useState(false);
   const { addProdCart } = useContext(CartContext);
-  const [prodtoCart, setProdToCart] = useState(false);
 
-  const onAdd = (quantityToAdd) => {
-    addProdCart({ id, name, quantity: quantityToAdd, img, category, price });
+  function onAdd(quantity) {
     setProdToCart(true);
-  };
+    addProdCart(props, quantity);
+    alert(
+      `Se cargo al carrito ${quantity} ${props.category} ${props.name} con éxito!`
+    );
+  }
 
   return (
     <Card
@@ -35,7 +30,7 @@ export const ItemDetail = ({
       <div className="row g-0  d-flex align-items-center">
         <div className="col-md-8">
           <Card.Img
-            src={img}
+            src={props.img}
             className="img-fluid rounded-start"
             variant="top"
           />{" "}
@@ -44,11 +39,11 @@ export const ItemDetail = ({
           <Card.Body>
             <Card.Title>
               <div>
-                <h2>{name}</h2>
-                <h6>Categoria: {category}</h6>
-                <h6>precio ${price}</h6>
-                <h6>stock {stock}</h6>
-                {prodtoCart ? (
+                <h2>{props.name}</h2>
+                <h6>Categoria: {props.category}</h6>
+                <h6>precio ${props.price}</h6>
+                <h6>stock {props.stock}</h6>
+                {prodToCart ? (
                   <div className="justify-content-center col-6">
                     <Link to="/cart">
                       {" "}
@@ -59,17 +54,19 @@ export const ItemDetail = ({
                   </div>
                 ) : (
                   <ItemCount
-                    initial={initial}
-                    stock={stock}
+                    initial={props.initial}
+                    stock={props.stock}
                     onAddCart={onAdd}
                   />
                 )}
               </div>
             </Card.Title>
-            <Button variant="success"> 😄Terminar Compra</Button>
+            <Button variant="warning">
+              <Link to="/Cart">Ir al carrito</Link>
+            </Button>
           </Card.Body>
         </div>
       </div>
     </Card>
   );
-};
+}
