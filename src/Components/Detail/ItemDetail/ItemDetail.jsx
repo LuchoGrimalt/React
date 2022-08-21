@@ -2,18 +2,18 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import ItemCount from "../../Detail/ItemCount/ItemCount";
+import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../../Cart/CartContext/CartContext";
 
-export default function ItemDetail(props) {
-  const [prodToCart, setProdToCart] = useState(false);
+export default function ItemDetail(prod) {
+  const [toCart, setToCart] = useState(false);
   const { addProdCart } = useContext(CartContext);
 
   function onAdd(quantity) {
-    setProdToCart(true);
-    addProdCart(props, quantity);
-    alert(
-      `Se cargo al carrito ${quantity} ${props.category} ${props.name} con éxito!`
+    setToCart(true);
+    addProdCart(prod, quantity);
+    console.log(prod,
+      `Se compraron ${quantity} ${prod.name} con éxito!`
     );
   }
 
@@ -30,40 +30,36 @@ export default function ItemDetail(props) {
       <div className="row g-0  d-flex align-items-center">
         <div className="col-md-8">
           <Card.Img
-            src={props.img}
+            src={prod.img}
             className="img-fluid rounded-start"
             variant="top"
           />{" "}
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 align-items-center">
           <Card.Body>
             <Card.Title>
               <div>
-                <h2>{props.name}</h2>
-                <h6>Categoria: {props.category}</h6>
-                <h6>precio ${props.price}</h6>
-                <h6>stock {props.stock}</h6>
-                {prodToCart ? (
+                <h2>{prod.name}</h2>
+                <h6>Categoria: {prod.category}</h6>
+                <h6>precio ${prod.price}</h6>
+                <h6>stock {prod.stock}</h6>
+                {toCart ? (
                   <div className="justify-content-center col-6">
                     <Link to="/cart">
-                      {" "}
-                      <Button className="btn btn-dark">
+                      <Button className="justify-content-center " >
                         Ir al carrito
-                      </Button>{" "}
+                      </Button>
                     </Link>
                   </div>
                 ) : (
                   <ItemCount
-                    initial={props.initial}
-                    stock={props.stock}
-                    onAddCart={onAdd}
+                    initial={1}
+                    stock={prod.stock}
+                    onAdd={onAdd}
                   />
                 )}
               </div>
             </Card.Title>
-            <Button variant="warning">
-              <Link to="/Cart">Ir al carrito</Link>
-            </Button>
           </Card.Body>
         </div>
       </div>

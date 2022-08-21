@@ -3,12 +3,10 @@ import Navbar from "./Components/Navbar/Navbar/Navbar";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
-import ProdDetailPage from "./Pages/ProdDetailPage";
-import Home from "./Pages/Home";
 import ItemDetailContainer from "./Components/Detail/ItemDetailContainer/ItemDetailContainer";
 import { CartProvider } from "./Components/Cart/CartContext/CartContext";
 import Cart from "./Components/Cart/Cart/Cart";
-import CartItem from "./Components/Cart/CartItem/CartItem";
+import ItemListContainer from "./Components/List/ItemListContainer/ItemListContainer";
 
 export default function App() {
   return (
@@ -16,8 +14,8 @@ export default function App() {
       <CartProvider>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Categoria/:categoryId" element={<ProdDetailPage />} />
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/Categoria/:categoryId" element={<ItemListContainer />} />
           <Route path="/Detalle/:detailId" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>

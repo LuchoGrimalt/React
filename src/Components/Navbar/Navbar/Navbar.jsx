@@ -2,8 +2,8 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { ButtonGroup, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CarWidget from "../CarWidget/CarWidget";
 import { NavLink } from "react-router-dom";
+import CartWidget from "../CartWidget/CartWidget";
 
 export default function Navbar() {
   return (
@@ -35,7 +35,7 @@ export default function Navbar() {
           <Button bg="secondary">Accesorios</Button>
         </NavLink>{" "}
       </ButtonGroup>
-      <CarWidget />
+      <CartWidget/>
       <Form className="d-flex">
         <Form.Control
           type="search"

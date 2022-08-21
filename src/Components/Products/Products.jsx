@@ -5,7 +5,6 @@ export const products = [
     category: "Accesorios",
     price: 99.0,
     stock: 5,
-    initial: 1,
     img: "../Images/gorro.jpg",
   },
   {
@@ -14,7 +13,6 @@ export const products = [
     category: "Ropa",
     price: 42.0,
     stock: 4,
-    initial: 1,
     img: "../Images/pantalon.jpg",
   },
   {
@@ -23,7 +21,6 @@ export const products = [
     category: "Ropa",
     price: 34.0,
     stock: 12,
-    initial: 1,
     img: "../Images/remera.jpg",
   },
   {
@@ -32,7 +29,6 @@ export const products = [
     category: "Ropa",
     price: 19.0,
     stock: 6,
-    initial: 1,
     img: "../Images/medias.jpg",
   },
   {
@@ -41,7 +37,6 @@ export const products = [
     category: "Accesorios",
     price: 19.0,
     stock: 4,
-    initial: 1,
     img: "../Images/bufanda.jpg",
   },
 ];
@@ -71,14 +66,14 @@ export const getProductsByCategory = (categoryId) => {
   return new Promise((res, rej) => {
     setTimeout(() => {
       res(products.filter(prod => prod.category === categoryId));
-    }, 500);
+    }, 200);
   });
 };
 
-export const getProductById = (id) => {
+export const getProductsById = (id) => {
   return new Promise((res, rej) => {
     setTimeout(() => {
-      res(products.find(prod=> prod.id === id));
-    }, 500);
+      res(products.find(prod=> prod.id === parseInt(id)));
+    }, 200);
   });
 };
