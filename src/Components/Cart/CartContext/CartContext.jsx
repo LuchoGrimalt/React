@@ -1,7 +1,8 @@
-import React, { Button, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
+import Button from "react-bootstrap/Button";
 
 // Hook tuneado
-export const CartContext = React.createContext([]);
+const CartContext = React.createContext([]);
 export const useCartContext = () => useContext(CartContext);
 
 //Funciones en el contexto del carrito de compras

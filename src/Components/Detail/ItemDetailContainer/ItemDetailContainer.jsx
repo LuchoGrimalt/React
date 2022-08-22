@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
 export default function ItemDetailContainer() {
-  const [prod, setProd] = useState({});
-  const { detailId } = useParams();
+              const [prod, setProd] = useState({});
+              const { detailId } = useParams();
 
   useEffect(() => {
     getProductsById(detailId)
