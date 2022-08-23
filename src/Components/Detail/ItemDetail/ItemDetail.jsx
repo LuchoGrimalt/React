@@ -12,9 +12,7 @@ export default function ItemDetail(prod) {
   function onAdd(quantity) {
     setToCart(true);
     addProdCart(prod, quantity);
-    console.log(prod,
-      `Se compraron ${quantity} ${prod.name} con éxito!`
-    );
+    console.log(prod, `Se compraron ${quantity} ${prod.name} con éxito!`);
   }
 
   return (
@@ -44,19 +42,22 @@ export default function ItemDetail(prod) {
                 <h6>precio ${prod.price}</h6>
                 <h6>stock {prod.stock}</h6>
                 {toCart ? (
-                  <div className="justify-content-center col-6">
+                  <div>
                     <Link to="/cart">
-                      <Button className="justify-content-center " >
+                      <Button className="btn btn-info col-3">
                         Ir al carrito
+                      </Button>
+                    </Link>
+                    <br />
+                    <br />
+                    <Link to={"/"}>
+                      <Button varaiant="danger col 7">
+                        Volver al catálogo
                       </Button>
                     </Link>
                   </div>
                 ) : (
-                  <ItemCount
-                    initial={1}
-                    stock={prod.stock}
-                    onAdd={onAdd}
-                  />
+                  <ItemCount initial={1} stock={prod.stock} onAdd={onAdd} />
                 )}
               </div>
             </Card.Title>

@@ -5,14 +5,14 @@ import { useCartContext } from "../CartContext/CartContext";
 import CartItem from "../CartItem/CartItem";
 
 export default function Cart() {
-  const { cart, totalPrice, finalBuy } = useCartContext();
-  console.log("carrito con", cart);
+  const { cartData, totalPrice, finalBuy } = useCartContext();
+  console.log("carrito con", cartData);
 
   return (
     <div>
       {" "}
-      {cart.length > 0 ? (
-        cart.map((item) => {
+      {cartData.length > 0 ? (
+        cartData.map((item) => {
           return (<CartItem  key={item.id}
             id={item.id}
             quantity={item.quantity}
