@@ -2,8 +2,7 @@ import "./style.css";
 import { BsMinecart } from "react-icons/bs";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-
+import React from "react";
 
 export default function CartWidget() {
   return (

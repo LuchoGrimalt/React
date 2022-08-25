@@ -42,7 +42,7 @@ export default function ItemCount({ initial, stock, onAdd }) {
         </Button>
       </div>
       <div>
-        <Button disabled={stock <=0} onClick={() => onAdd(count)}>Agregar al 🛒</Button>
+        <Button disabled={stock <=0} onClick={() => onAdd(count)}>Agregar al carrito</Button>
       </div>
     </div>
   );

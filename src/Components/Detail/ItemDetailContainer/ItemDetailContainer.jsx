@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { getProductsById } from "../../Products/Products";
+import { getProductsData } from "../../Data/Products";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
 export default function ItemDetailContainer() {
-              const [prod, setProd] = useState({});
-              const { detailId } = useParams();
+  const [item, setProd] = useState({});
+  const { detailId } = useParams();
 
   useEffect(() => {
-    getProductsById(detailId)
-    .then(prod => setProd(prod))
-    }, [detailId]);
+    getProductsData(detailId).then((prod) => setProd(prod));
+  }, [detailId]);
 
-    return (
+  return (
     <div className="item-detail-container">
-      <ItemDetail {...prod} />
+      <ItemDetail id={item.id} name={item.name} img={item.img} 
+      category={item.category} price={item.price} stock={item.stock}/>
     </div>
   );
-};
-
+}

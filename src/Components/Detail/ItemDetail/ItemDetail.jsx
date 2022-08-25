@@ -1,18 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ItemCount from "../ItemCount/ItemCount";
 import { useCartContext } from "../../Cart/CartContext/CartContext";
 
-export default function ItemDetail(prod) {
-  const [toCart, setToCart] = useState(false);
+export default function ItemDetail({id, name, img, category, price, stock}) {
   const { addProdCart } = useCartContext();
+  const [toCart, setToCart] = useState(false);
 
-  function onAdd(quantity) {
+  function onAdd(quantityCart) {
+    addProdCart({id, name, img, category, price, stock, quantity: quantityCart});
+    console.log(`Se agrego ${quantityCart} ${name} al carrito!`);
     setToCart(true);
-    addProdCart(prod, quantity);
-    console.log(prod, `Se compraron ${quantity} ${prod.name} con éxito!`);
   }
 
   return (
@@ -23,12 +23,11 @@ export default function ItemDetail(prod) {
         margin: "12px",
         padding: "8px",
         display: "flex",
-      }}
-    >
+      }}>
       <div className="row g-0  d-flex align-items-center">
         <div className="col-md-8">
           <Card.Img
-            src={prod.img}
+            src={img}
             className="img-fluid rounded-start"
             variant="top"
           />{" "}
@@ -37,14 +36,14 @@ export default function ItemDetail(prod) {
           <Card.Body>
             <Card.Title>
               <div>
-                <h2>{prod.name}</h2>
-                <h6>Categoria: {prod.category}</h6>
-                <h6>precio ${prod.price}</h6>
-                <h6>stock {prod.stock}</h6>
+                <h2>{name}</h2>
+                <h6>Categoria: {category}</h6>
+                <h6>precio ${price}</h6>
+                <h6>stock {stock}</h6>
                 {toCart ? (
                   <div>
                     <Link to="/cart">
-                      <Button className="btn btn-info col-3">
+                      <Button className="btn btn-info col-4">
                         Ir al carrito
                       </Button>
                     </Link>
@@ -52,12 +51,12 @@ export default function ItemDetail(prod) {
                     <br />
                     <Link to={"/"}>
                       <Button varaiant="danger col 7">
-                        Volver al catálogo
+                        Seguir comprando
                       </Button>
                     </Link>
                   </div>
                 ) : (
-                  <ItemCount initial={1} stock={prod.stock} onAdd={onAdd} />
+                  <ItemCount initial={1} stock={stock} onAdd={onAdd} />
                 )}
               </div>
             </Card.Title>
