@@ -1,4 +1,4 @@
-import { DB } from "../../Firebase";
+import { DB } from "./Firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 export const products = [
