@@ -10,7 +10,7 @@ export default function CartWidget() {
   return (
     <div className="iconocart">
       <div className="enCarrito">
-      {totalProd !== 0 ? <input type="text" value={totalProd()} readOnly /> : ""}
+      {totalProd !== 0 ? totalProd() : ""}
       </div>
       <div>
         <Button variant="warning">

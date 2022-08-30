@@ -3,27 +3,41 @@ import CartItem from "../CartItem/CartItem";
 import { useCartContext } from "../CartContext/CartContext";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { addDoc, getFirestore, collection } from "firebase/firestore";
 
 export default function Cart() {
   const { cartData, totalPrice, finalBuy, emptyCart } = useCartContext();
-  // console.log("carrito con", cartData);
+  console.log("carrito con", cartData);
 
-  // function createOrder() {
-  //   const itemsOrder = test.finalList.map((item) => ({
-  //     id: item.iditem,
-  //     title: name.item,
-  //     price: price.item,
-  //   })).sort;
+  const order = {
+    buyer: {
+      name: "Esteban Kito",
+      phone: "1566889911",
+      email: "oldschool@gmail.com",
+    },
+    items: cartData.map((data) => ({
+      id: data.id,
+      title: data.title,
+      price: data.price,
+      quantity: data.quantity,
+    })),
+    total: totalPrice(),
+  };
 
-  //   let order = {
-  //     buyer: {
-  //       name: "Esteban Kito",
-  //       phone: "1566889911",
-  //       email: "oldschool@gmail.com",
-  //     },
-  //     items: test.finalList,
-  //     total: test.totalBuy(),
-  //   };
+  const genOrder = () => {
+    const db = getFirestore();
+    const orderCollection = collection(db, "orders");
+    addDoc(orderCollection, order).then(({ id }) => console.log(id))
+  }
+
+  if (cartData.length === 0) {
+    return (
+      <>
+        <p>Aún no hay elemetos en el carrito</p>
+        <Link to="/"> Seguir comprando </Link>
+      </>
+    );
+  }
 
   return (
     <div>
@@ -56,7 +70,9 @@ export default function Cart() {
       </div>
       <br />
       <Link to={"/"}>
-        <Button className="btn btn-info bg-warning">Volver al catálogo</Button>
+        <Button className="btn btn-info bg-warning" onClick={genOrder()}>
+          Generar Orden
+        </Button>
       </Link>
     </div>
   );
