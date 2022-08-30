@@ -3,11 +3,15 @@ import { BsMinecart } from "react-icons/bs";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React from "react";
+import { useCartContext } from "../../Cart/CartContext/CartContext";
 
 export default function CartWidget() {
+  const { totalProd } = useCartContext();
   return (
     <div className="iconocart">
-      <div className="enCarrito">0</div>
+      <div className="enCarrito">
+      {totalProd !== 0 ? <input type="text" value={totalProd()} readOnly /> : ""}
+      </div>
       <div>
         <Button variant="warning">
           <Link to="/Cart">

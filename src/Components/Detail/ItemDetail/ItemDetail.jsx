@@ -5,14 +5,14 @@ import Button from "react-bootstrap/Button";
 import ItemCount from "../ItemCount/ItemCount";
 import { useCartContext } from "../../Cart/CartContext/CartContext";
 
-export default function ItemDetail({id, name, img, category, price, stock}) {
+export default function ItemDetail({ id, name, img, category, price, stock }) {
   const { addProdCart } = useCartContext();
   const [toCart, setToCart] = useState(false);
 
   function onAdd(quantityCart) {
     addProdCart({id, name, img, category, price, stock, quantity: quantityCart});
-    console.log(`Se agrego ${quantityCart} ${name} al carrito!`);
     setToCart(true);
+    console.log(`Se agrego ${quantityCart} ${name} al carrito!`);
   }
 
   return (
@@ -23,7 +23,8 @@ export default function ItemDetail({id, name, img, category, price, stock}) {
         margin: "12px",
         padding: "8px",
         display: "flex",
-      }}>
+      }}
+    >
       <div className="row g-0  d-flex align-items-center">
         <div className="col-md-8">
           <Card.Img
@@ -50,9 +51,7 @@ export default function ItemDetail({id, name, img, category, price, stock}) {
                     <br />
                     <br />
                     <Link to={"/"}>
-                      <Button varaiant="danger col 7">
-                        Seguir comprando
-                      </Button>
+                      <Button varaiant="danger col 7">Seguir comprando</Button>
                     </Link>
                   </div>
                 ) : (

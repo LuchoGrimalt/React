@@ -23,10 +23,10 @@ export default function Navbar() {
           <Button bg="secondary">Incio</Button>
         </NavLink>{" "}
         <NavLink
-          to="/Categoria/Ropa"
+          to="/Categoria/Vestimenta"
           className={({ isActive }) => (isActive ? "pagina-activa" : undefined)}
         >
-          <Button bg="secondary">Ropa</Button>
+          <Button bg="secondary">Vestimenta</Button>
         </NavLink>{" "}
         <NavLink
           to="/Categoria/Accesorios"

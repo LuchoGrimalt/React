@@ -1,29 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { getProductsData } from "../../Data/Products";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
+import { DB } from "../../Data/Firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 export default function ItemListContainer() {
   const [prod, setProd] = useState([]);
-  const { id } = useParams();
-  const categoryId = !isNaN(id) && +id;
+  const { categoryId } = useParams();
 
   useEffect(() => {
-    setProd([]);
-    const productsDBPromise = getProductsData(categoryId);
-    productsDBPromise.then(
-      (data) => {
-        setProd(data);
-      },
-      (err) => {
-        console.log("Error getting products", err);
-      }
-    );
+    const queryCol = collection(DB, "products");
+    if (categoryId) {
+      const queryCat = query(
+        queryCol,
+        where("category", "==", categoryId)
+      );
+      getDocs(queryCat).then((res) =>
+        setProd(
+          res.docs.map((product) => ({ id: product.id, ...product.data() }))
+        )
+      );
+    } else {
+      getDocs(queryCol).then((res) =>
+        setProd(
+          res.docs.map((product) => ({ id: product.id, ...product.data() }))
+        )
+      );
+    }
   }, [categoryId]);
 
   return (
     <div>
-      <ItemList prod={prod} category={categoryId} />
+      <ItemList data={prod} category={categoryId} />
     </div>
   );
 }
