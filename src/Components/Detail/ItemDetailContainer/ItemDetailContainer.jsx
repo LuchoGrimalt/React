@@ -18,7 +18,9 @@ export const ItemDetailContainer = () => {
 
   return (
     <div className="item-detail-container">
-      {<ItemDetail {...data} />}  
+      {data? 
+       (<ItemDetail {...data} />)
+      :(<div className="item-detail-container"> Cargando producto</div>)} 
     </div>
   );
 };

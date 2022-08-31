@@ -9,19 +9,18 @@ export const useCartContext = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cartData, setCart] = useState([]);
 
-  // Agregado condicional
+  // Agregado productos al carrito
   const addProdCart = (item) => {
-    const orderList = cartData.find((prod) => prod.id === item.id)
-      ? cartData.map((prod) => {
-          if (prod.id === item.id) {
-            return { ...prod, quantity: prod.quantity + item.quantity };
+    const cartList = cartData.find((prodInCart) => prodInCart.id === item.id)
+      ? cartData.map((prodInCart) => {
+          if (prodInCart.id === item.id) {
+            return { ...prodInCart, quantity: prodInCart.quantity + item.quantity };
           }
-          return prod;
+          return prodInCart;
         })
       : [...cartData, item];
-    setCart(orderList);
+    setCart(cartList);
   };
-  console.log(JSON.stringify(cartData));
   
   // vaciar carrito con array nuevo.
   const emptyCart = () =>
@@ -92,7 +91,7 @@ export const CartProvider = ({ children }) => {
         totalPrice,
         totalBuy,
         finalBuy,
-        cartData,
+        cart : cartData,
       }}
     >
       {children}

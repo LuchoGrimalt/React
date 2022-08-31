@@ -28,14 +28,13 @@ const CartItem = ({ id, quantity, name, img, price }) => {
           <Card.Body>
             <Card.Title>
               <div>
-                <h4> {name} </h4>
+                <p> {name} </p>
                 <p> Cantidad: {quantity} </p>
                 <p> Precio unitario: ${price}</p>
                 <p> Subtotal: ${quantity * price}</p>
                 <Button
                   className="btn btn-secondary col-6"
-                  onClick={() => delProdCart(id)}
-                >
+                  onClick={() => delProdCart(id)}>
                   Quitar Producto
                 </Button>
               </div>

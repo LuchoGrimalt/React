@@ -3,11 +3,12 @@ import CartItem from "../CartItem/CartItem";
 import { useCartContext } from "../CartContext/CartContext";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { addDoc, getFirestore, collection } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
+import { DB } from "../../Data/Firebase";
 
 export default function Cart() {
-  const { cartData, totalPrice, finalBuy, emptyCart } = useCartContext();
-  console.log("carrito con", cartData);
+  const { cart, totalPrice, finalBuy, emptyCart } = useCartContext();
+  console.log("carrito con", cart);
 
   const order = {
     buyer: {
@@ -15,22 +16,22 @@ export default function Cart() {
       phone: "1566889911",
       email: "oldschool@gmail.com",
     },
-    items: cartData.map((data) => ({
+    items: cart.map((data) => ({
       id: data.id,
-      title: data.title,
+      title: data.name,
       price: data.price,
       quantity: data.quantity,
     })),
     total: totalPrice(),
   };
+  console.log(order);
 
   const genOrder = () => {
-    const db = getFirestore();
-    const orderCollection = collection(db, "orders");
-    addDoc(orderCollection, order).then(({ id }) => console.log(id))
+    const ordersCollection = collection(DB, "orders");
+    addDoc(ordersCollection, order).then(({ id }) => console.log(id))
   }
 
-  if (cartData.length === 0) {
+  if (cart.length === 0) {
     return (
       <>
         <p>Aún no hay elemetos en el carrito</p>
@@ -42,16 +43,16 @@ export default function Cart() {
   return (
     <div>
       {" "}
-      {cartData.length > 0 ? (
-        cartData.map((item) => {
+      {cart.length > 0 ? (
+        cart.map((item) => {
           return (
             <CartItem
               key={item.id}
               id={item.id}
               quantity={item.quantity}
-              nombre={item.name}
-              imagen={item.img}
-              precio={item.price}
+              name={item.name}
+              img={item.img}
+              price={item.price}
             />
           );
         })
@@ -65,12 +66,12 @@ export default function Cart() {
       )}
       <div>
         <h4 className="cartTotal">Total: ${totalPrice()}</h4>
-        <Button onClick={finalBuy()}>Finalizar compra</Button>
+        {/* <Button onClick={finalBuy()}>Finalizar compra</Button> */}
         <Button onClick={emptyCart()}>Vaciar carrito</Button>
       </div>
       <br />
       <Link to={"/"}>
-        <Button className="btn btn-info bg-warning" onClick={genOrder()}>
+        <Button className="btn btn-info" onClick={genOrder()}>
           Generar Orden
         </Button>
       </Link>
