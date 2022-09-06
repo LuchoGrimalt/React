@@ -14,41 +14,25 @@ export const CartProvider = ({ children }) => {
     const cartList = cartData.find((prodInCart) => prodInCart.id === item.id)
       ? cartData.map((prodInCart) => {
           if (prodInCart.id === item.id) {
-            return { ...prodInCart, quantity: prodInCart.quantity + item.quantity };
+            return {
+              ...prodInCart,
+              quantity: prodInCart.quantity + item.quantity,
+            };
           }
           return prodInCart;
         })
       : [...cartData, item];
     setCart(cartList);
   };
-  
-  // vaciar carrito con array nuevo.
-  const emptyCart = () =>
-    cartData.lengtht >= 1 ? (
-      <Button onClick={setCart([])} className="btn-default" />
-    ) : null;
-
-  // el prod ya estaba en el cart?
-  const isInCart = (id) =>
-    cartData.find((prod) => prod.id === id) ? true : false;
 
   // Borrar formando un nuevo array sacando al elegido
   const delProdCart = (id) =>
     setCart(cartData.filter((prod) => prod.id !== id));
 
-  // const addProdCart = (item,quantity) => {
-  //   if (isInCart(item.id)) {
-  //     setCart(
-  //       cartData.map((prod) => {
-  //         return prod.id === item.id
-  //           ? {...prod, quantity: prod.quantity + quantity }
-  //           : prod;
-  //       })
-  //     );
-  //   } else {
-  //     setCart([...cartData, { ...item, quantity }]);
-  //   }
-  // };
+  // vaciar carrito con array nuevo.
+  const emptyCart = () => {
+    setCart([]);
+  };
 
   // Productos
   const totalProd = () => {
@@ -85,13 +69,12 @@ export const CartProvider = ({ children }) => {
       value={{
         addProdCart,
         emptyCart,
-        isInCart,
         delProdCart,
         totalProd,
         totalPrice,
         totalBuy,
         finalBuy,
-        cart : cartData,
+        cart: cartData,
       }}
     >
       {children}

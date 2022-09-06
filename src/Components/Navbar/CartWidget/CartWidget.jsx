@@ -8,10 +8,8 @@ import { useCartContext } from "../../Cart/CartContext/CartContext";
 export default function CartWidget() {
   const { totalProd } = useCartContext();
   return (
-    <div className="iconocart">
-      <div className="enCarrito">
-      {totalProd !== 0 ? totalProd() : ""}
-      </div>
+    <div className="iconCart">
+      <div className="enCarrito">{totalProd !== 0 ? totalProd() : ""}</div>
       <div>
         <Button variant="warning">
           <Link to="/Cart">

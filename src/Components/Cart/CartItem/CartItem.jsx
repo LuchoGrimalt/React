@@ -10,9 +10,7 @@ const CartItem = ({ id, quantity, name, img, price }) => {
       className="card mb-3"
       style={{
         maxWidth: "500px",
-        margin: "12px",
-        padding: "8px",
-        display: "flex",
+        margin: "10px",
       }}
     >
       <div className="row g-0  d-flex align-items-center">
@@ -23,8 +21,7 @@ const CartItem = ({ id, quantity, name, img, price }) => {
             variant="top"
           />{" "}
         </div>
-        <div className="col-md-8
-         align-items-center">
+        <div className="col-md-8 align-items-center">
           <Card.Body>
             <Card.Title>
               <div>
@@ -34,7 +31,8 @@ const CartItem = ({ id, quantity, name, img, price }) => {
                 <p> Subtotal: ${quantity * price}</p>
                 <Button
                   className="btn btn-secondary col-6"
-                  onClick={() => delProdCart(id)}>
+                  onClick={() => delProdCart(id)}
+                >
                   Quitar Producto
                 </Button>
               </div>

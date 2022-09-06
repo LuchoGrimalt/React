@@ -7,7 +7,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { DB } from "../../Data/Firebase";
 
 export default function Cart() {
-  const { cart, totalPrice, finalBuy, emptyCart } = useCartContext();
+  const { cart, totalPrice, emptyCart } = useCartContext();
   console.log("carrito con", cart);
 
   const order = {
@@ -28,14 +28,17 @@ export default function Cart() {
 
   const genOrder = () => {
     const ordersCollection = collection(DB, "orders");
-    addDoc(ordersCollection, order).then(({ id }) => console.log(id))
-  }
+    addDoc(ordersCollection, order).then(({ id }) => console.log(id));
+    emptyCart();
+  };
 
   if (cart.length === 0) {
     return (
       <>
         <p>Aún no hay elemetos en el carrito</p>
-        <Link to="/"> Seguir comprando </Link>
+        <Link to="/">
+          <Button>Seguir comprando</Button>
+        </Link>
       </>
     );
   }
@@ -57,23 +60,18 @@ export default function Cart() {
           );
         })
       ) : (
-        <div className="w-auto shadow-lg rounded d-flex row">
-          <h3 className="text-dark text-center bg-warning ">Carrito Vacio </h3>
-          <Link to={"/"}>
-            <Button className="btn btn-info col-5">Volver al catálogo</Button>
-          </Link>
-        </div>
+        <></>
       )}
       <div>
         <h4 className="cartTotal">Total: ${totalPrice()}</h4>
-        {/* <Button onClick={finalBuy()}>Finalizar compra</Button> */}
-        <Button onClick={emptyCart()}>Vaciar carrito</Button>
+        <Link to={"/"}>
+          <Button varaiant="danger col 7">Seguir comprando</Button>
+        </Link>
+        <Button onClick={() => emptyCart()}>Vaciar carrito</Button>
       </div>
       <br />
       <Link to={"/"}>
-        <Button className="btn btn-info" onClick={genOrder()}>
-          Generar Orden
-        </Button>
+        <Button onClick={genOrder}> Comprar</Button>
       </Link>
     </div>
   );
