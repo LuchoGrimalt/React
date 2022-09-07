@@ -9,30 +9,29 @@ export default function Navbar() {
   return (
     <div className="navbar bg-warning" >
       <ButtonGroup size="lg" className="mb-2">
-        <img
-          className="marca"
-          src="../Images/favicon.ico"
-          width={40}
-          height={40}
+        <img className="marca" src="../Images/Logo.png"
+          width={400}
+          height={90}
           alt="Logo Guadapulpe"
+          style={{margin: '0'}}
         ></img>
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? "pagina-activa" : undefined)}
         >
-          <Button bg="secondary">Incio</Button>
+          <Button className="mb-2" bg="secondary">Incio</Button>
         </NavLink>{" "}
         <NavLink
           to="/Categoria/Vestimenta"
           className={({ isActive }) => (isActive ? "pagina-activa" : undefined)}
         >
-          <Button bg="secondary">Vestimenta</Button>
+          <Button className="mb-2" bg="secondary">Vestimenta</Button>
         </NavLink>{" "}
         <NavLink
           to="/Categoria/Accesorios"
           className={({ isActive }) => (isActive ? "pagina-activa" : undefined)}
         >
-          <Button bg="secondary">Accesorios</Button>
+          <Button className="mb-2" bg="secondary">Accesorios</Button>
         </NavLink>{" "}
       </ButtonGroup>
       <CartWidget/>

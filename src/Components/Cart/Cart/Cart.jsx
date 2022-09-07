@@ -3,7 +3,7 @@ import CartItem from "../CartItem/CartItem";
 import { useCartContext } from "../CartContext/CartContext";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, increment, updateDoc } from "firebase/firestore";
 import { DB } from "../../Data/Firebase";
 
 export default function Cart() {
@@ -29,6 +29,10 @@ export default function Cart() {
   const genOrder = () => {
     const ordersCollection = collection(DB, "orders");
     addDoc(ordersCollection, order).then(({ id }) => console.log(id));
+    cart.forEach(async (item) => {
+      const itemRef = doc(DB, "products", item.id);
+      await updateDoc(itemRef, { stock: increment(-item.quantity) });
+    });
     emptyCart();
   };
 
@@ -71,7 +75,7 @@ export default function Cart() {
       </div>
       <br />
       <Link to={"/"}>
-        <Button onClick={genOrder}> Comprar</Button>
+        <Button onClick={genOrder}>Comprar</Button>
       </Link>
     </div>
   );
