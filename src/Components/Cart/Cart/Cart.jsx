@@ -38,12 +38,12 @@ export default function Cart() {
 
   if (cart.length === 0) {
     return (
-      <>
-        <p>Aún no hay elemetos en el carrito</p>
+      <div>
+        <p>No hay elemetos en el carrito</p>
         <Link to="/">
           <Button>Seguir comprando</Button>
         </Link>
-      </>
+      </div>
     );
   }
 
@@ -69,14 +69,16 @@ export default function Cart() {
       <div>
         <h4 className="cartTotal">Total: ${totalPrice()}</h4>
         <Link to={"/"}>
-          <Button varaiant="danger col 7">Seguir comprando</Button>
+          <Button>Seguir comprando</Button>
         </Link>
-        <Button onClick={() => emptyCart()}>Vaciar carrito</Button>
       </div>
-      <br />
+      <div className="my-3">
+        <Button className="bg-info"onClick={() => emptyCart()}>Vaciar carrito</Button>
+      </div>
       <Link to={"/"}>
-        <Button onClick={genOrder}>Comprar</Button>
+        <Button  onClick={genOrder}>Comprar</Button>
       </Link>
+      <br />
     </div>
   );
 }
