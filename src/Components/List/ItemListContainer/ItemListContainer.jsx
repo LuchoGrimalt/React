@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { DB } from "../../Data/Firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import Carrousel from "../../Carrousel/Carrousel";
 
 export default function ItemListContainer() {
   const [prod, setProd] = useState([]);
@@ -11,10 +12,7 @@ export default function ItemListContainer() {
   useEffect(() => {
     const queryCol = collection(DB, "products");
     if (categoryId) {
-      const queryCat = query(
-        queryCol,
-        where("category", "==", categoryId)
-      );
+      const queryCat = query(queryCol, where("category", "==", categoryId));
       getDocs(queryCat).then((res) =>
         setProd(
           res.docs.map((product) => ({ id: product.id, ...product.data() }))
@@ -31,6 +29,7 @@ export default function ItemListContainer() {
 
   return (
     <div>
+      <Carrousel />
       <ItemList data={prod} category={categoryId} />
     </div>
   );

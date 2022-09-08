@@ -10,17 +10,19 @@ export const ItemDetailContainer = () => {
   const { detailId } = useParams();
 
   useEffect(() => {
-    const prodDetail = doc(DB, "products", detailId); 
+    const prodDetail = doc(DB, "products", detailId);
     getDoc(prodDetail)
-      .then((res) => setData({ id: res.id, ...res.data() })) 
+      .then((res) => setData({ id: res.id, ...res.data() }))
       .catch((err) => console.log(err));
   }, [detailId]);
 
   return (
-    <div className="item-detail-container">
-      {data? 
-       (<ItemDetail {...data} />)
-      :(<div className="item-detail-container"> Cargando producto</div>)} 
+    <div className="item-detail-container d-flex justify-content-md-center ">
+      {data ? (
+        <ItemDetail {...data} />
+      ) : (
+        <div className="item-detail-container"> Cargando producto....</div>
+      )}
     </div>
   );
 };

@@ -17,7 +17,7 @@ const CartItem = ({ id, quantity, name, img, price }) => {
         <div className="col-md-4">
           <Card.Img
             src={img}
-            className="img-fluid rounded-start"
+            className="img-fluid rounded mx-2"
             variant="top"
           />{" "}
         </div>
@@ -26,12 +26,12 @@ const CartItem = ({ id, quantity, name, img, price }) => {
             <Card.Title>
               <div>
                 <h6>
-                  {" "}
-                  {name} x {quantity} unidades a ${price} c/u.
+                  {name} x {quantity} unidades a ${price} c/u
                 </h6>
                 <h6> Subtotal: ${quantity * price}</h6>
+                <br />
                 <Button
-                  className="btn btn-sm btn-secondary col-6"
+                  className="btn btn-secondary fs-6 p-2"
                   onClick={() => delProdCart(id)}
                 >
                   Quitar Producto

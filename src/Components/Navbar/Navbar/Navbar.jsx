@@ -7,43 +7,48 @@ import CartWidget from "../CartWidget/CartWidget";
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-warning" >
-      <ButtonGroup size="lg" className="mb-2">
-        <img className="marca" src="../Images/Logo.png"
-          width={400}
-          height={90}
-          alt="Logo Guadapulpe"
-          style={{margin: '0'}}
-        ></img>
+    <div className="navbar bg-white bg-gradient sticky-top border-bottom">
+      <ButtonGroup size="sm" className="d-flex align-items-center">
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? "pagina-activa" : undefined)}
         >
-          <Button className="mb-2" bg="secondary">Incio</Button>
+          <Button className="mx-2 btn-light fs-5">Incio</Button>
         </NavLink>{" "}
         <NavLink
-          to="/Categoria/Vestimenta"
+          to="/Categoria/Indumentaria"
           className={({ isActive }) => (isActive ? "pagina-activa" : undefined)}
         >
-          <Button className="mb-2" bg="secondary">Vestimenta</Button>
+          <Button className="mx-2 btn-light fs-5">Indumentaria</Button>
         </NavLink>{" "}
         <NavLink
           to="/Categoria/Accesorios"
           className={({ isActive }) => (isActive ? "pagina-activa" : undefined)}
         >
-          <Button className="mb-2" bg="secondary">Accesorios</Button>
+          <Button className="mx-2 btn-light fs-5">Accesorios</Button>
         </NavLink>{" "}
       </ButtonGroup>
-      <CartWidget/>
-      <Form className="d-flex">
+      <NavLink to="/">
+        <img
+          className="marca rounded"
+          src="../Images/Logo.png"
+          width={400}
+          height={90}
+          alt="Logo Guadapulpe"
+        ></img>
+      </NavLink>
+      <Form className="d-flex align-items-center mx-2">
         <Form.Control
           type="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
+          placeholder="Buscar"
+          className="m-0"
+          aria-label="search"
         />
-        <Button variant="outline-success">Search</Button>
+        <Button variant="outline-primary m-0 p-0 border-0">
+          <img src="../Images/lupa.png " width={38} height={38} alt="search" />
+        </Button>
       </Form>
+      <CartWidget className="mx-2" />
     </div>
   );
 }

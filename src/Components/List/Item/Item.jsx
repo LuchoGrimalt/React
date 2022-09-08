@@ -13,8 +13,8 @@ export default function Item(props) {
         <Card.Title>
           <div>
             <h4>{props.name}</h4>
-            <h6>Categoria: {props.category}</h6>
-            <h6>precio ${props.price}</h6>
+            <h6>Categoría: {props.category}</h6>
+            <h6>${props.price}</h6>
           </div>
         </Card.Title>
         <Link varaiant="danger" to={`/Detalle/${props.id}`}>

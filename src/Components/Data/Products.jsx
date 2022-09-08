@@ -3,7 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 
 export const getProductsData = (categoryId) => {
   return new Promise((res, rej) => {
-    // creo la referencia a la collecion
+    // creo la referencia a la colecion
     const colRef = collection(DB, "products");
     getDocs(colRef).then(
       (snapshot) => {
@@ -25,6 +25,3 @@ export const getProductsData = (categoryId) => {
     );
   });
 };
-
-
-

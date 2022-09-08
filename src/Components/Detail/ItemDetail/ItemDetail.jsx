@@ -10,41 +10,49 @@ export default function ItemDetail({ id, name, img, category, price, stock }) {
   const [toCart, setToCart] = useState(false);
 
   function onAdd(quantityCart) {
-    addProdCart({id, name, img, category, price, stock, quantity: quantityCart});
+    addProdCart({
+      id,
+      name,
+      img,
+      category,
+      price,
+      stock,
+      quantity: quantityCart,
+    });
     setToCart(true);
     console.log(`Se agrego ${quantityCart} ${name} al carrito!`);
   }
 
   return (
     <Card
-      className="card mb-3"
+      className="card mb-6"
       style={{
-        maxWidth: "900px",
+        maxWidth: "950px",
         margin: "12px",
         padding: "8px",
         display: "flex",
       }}
     >
       <div className="row g-0  d-flex align-items-center">
-        <div className="col-md-8">
+        <div className="col-md-9">
           <Card.Img
             src={img}
             className="img-fluid rounded-start"
             variant="top"
           />{" "}
         </div>
-        <div className="col-md-4 align-items-center">
+        <div className="col-md-3 align-items-center">
           <Card.Body>
             <Card.Title>
               <div>
                 <h2>{name}</h2>
-                <h6>Categoria: {category}</h6>
+                <h6>Categoría: {category}</h6>
                 <h6>precio ${price}</h6>
                 <h6>stock {stock}</h6>
                 {toCart ? (
                   <div>
                     <Link to="/cart">
-                      <Button className="btn btn-info col-4">
+                      <Button className="btn btn-info col-5 p-0 m-0">
                         Ir al carrito
                       </Button>
                     </Link>

@@ -10,7 +10,7 @@ import ItemListContainer from "./Components/List/ItemListContainer/ItemListConta
 
 export default function App() {
   return (
-    <div className="App">
+    <div className="App bg-info">
       <CartProvider>
         <BrowserRouter>
           <Navbar />
