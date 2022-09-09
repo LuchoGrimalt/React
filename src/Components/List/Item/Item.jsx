@@ -18,7 +18,7 @@ export default function Item(props) {
           </div>
         </Card.Title>
         <Link varaiant="danger" to={`/Detalle/${props.id}`}>
-          <Button className="btn-warning">Ver detalles</Button>
+          <Button className="btn-info">Ver detalles</Button>
         </Link>
       </Card.Body>
     </Card>

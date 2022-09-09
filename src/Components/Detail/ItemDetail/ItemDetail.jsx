@@ -33,15 +33,15 @@ export default function ItemDetail({ id, name, img, category, price, stock }) {
         display: "flex",
       }}
     >
-      <div className="row g-0  d-flex align-items-center">
+      <div className="row d-flex align-items-center">
         <div className="col-md-9">
           <Card.Img
             src={img}
-            className="img-fluid rounded-start"
+            className="img-fluid rounded"
             variant="top"
           />{" "}
         </div>
-        <div className="col-md-3 align-items-center">
+        <div className="col-md-3">
           <Card.Body>
             <Card.Title>
               <div>
@@ -52,7 +52,7 @@ export default function ItemDetail({ id, name, img, category, price, stock }) {
                 {toCart ? (
                   <div>
                     <Link to="/cart">
-                      <Button className="btn btn-info col-5 p-0 m-0">
+                      <Button className="btn btn-info col-6">
                         Ir al carrito
                       </Button>
                     </Link>

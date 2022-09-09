@@ -1,21 +1,24 @@
 import React from "react";
 import CartItem from "../CartItem/CartItem";
 import { useCartContext } from "../CartContext/CartContext";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { addDoc, collection, doc, increment, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  increment,
+  updateDoc,
+} from "firebase/firestore";
 import { DB } from "../../Data/Firebase";
+import {clientData} from "../../Forms/Client/client";
 
 export default function Cart() {
   const { cart, totalPrice, emptyCart } = useCartContext();
   console.log("carrito con", cart);
 
   const order = {
-    buyer: {
-      name: "Esteban Kito",
-      phone: "1566889911",
-      email: "oldschool@gmail.com",
-    },
+    buyer: 'nadie',
     items: cart.map((data) => ({
       id: data.id,
       title: data.name,
@@ -49,23 +52,38 @@ export default function Cart() {
 
   return (
     <div>
-      {" "}
-      {cart.length > 0 ? (
-        cart.map((item) => {
-          return (
-            <CartItem
-              key={item.id}
-              id={item.id}
-              quantity={item.quantity}
-              name={item.name}
-              img={item.img}
-              price={item.price}
-            />
-          );
-        })
-      ) : (
-        <></>
-      )}
+      <div className="container">
+        <div className="row">
+          <div className="col-6">
+            <div>
+              {cart.length > 0 ? (
+                cart.map((item) => {
+                  return (
+                    <CartItem
+                      key={item.id}
+                      id={item.id}
+                      quantity={item.quantity}
+                      name={item.name}
+                      img={item.img}
+                      price={item.price}
+                    />
+                  );
+                })
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
+          <div className="col-6">
+            <Card>
+              
+            <p>lugar para el form</p>
+            {/* <clientData /> */}
+
+            </Card>
+          </div>
+        </div>
+      </div>
       <div>
         <h4 className="cartTotal">Total: ${totalPrice()}</h4>
         <Link to={"/"}>
@@ -73,10 +91,12 @@ export default function Cart() {
         </Link>
       </div>
       <div className="my-3">
-        <Button className="bg-info"onClick={() => emptyCart()}>Vaciar carrito</Button>
+        <Button className="bg-info" onClick={() => emptyCart()}>
+          Vaciar carrito
+        </Button>
       </div>
       <Link to={"/"}>
-        <Button  onClick={genOrder}>Comprar</Button>
+        <Button onClick={genOrder}>Comprar</Button>
       </Link>
       <br />
     </div>

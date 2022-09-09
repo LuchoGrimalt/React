@@ -7,7 +7,7 @@ import CartWidget from "../CartWidget/CartWidget";
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-white bg-gradient sticky-top border-bottom">
+    <div className="navbar bg-white sticky-top border-bottom">
       <ButtonGroup size="sm" className="d-flex align-items-center">
         <NavLink
           to="/"

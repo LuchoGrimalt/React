@@ -47,6 +47,7 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  
   // Precio final de la compra
   const totalBuy = () => {
     cartData.reduce(
