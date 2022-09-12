@@ -4,6 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { DB } from "../../Data/Firebase";
 import React from "react";
 import ItemDetail from "../../Detail/ItemDetail/ItemDetail";
+import { Spinner } from "react-bootstrap";
 
 export const ItemDetailContainer = () => {
   const [data, setData] = useState();
@@ -17,11 +18,14 @@ export const ItemDetailContainer = () => {
   }, [detailId]);
 
   return (
-    <div className="item-detail-container d-flex justify-content-md-center ">
+    <div >
       {data ? (
         <ItemDetail {...data} />
       ) : (
-        <div className="item-detail-container"> Cargando producto....</div>
+        <div > 
+        <h6>Cargando producto...</h6> 
+        <Spinner animation="border" variant="warning" />
+        </div>
       )}
     </div>
   );

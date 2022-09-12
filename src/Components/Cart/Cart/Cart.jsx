@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import CartItem from "../CartItem/CartItem";
 import { useCartContext } from "../CartContext/CartContext";
-import { Button, Card } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {
   addDoc,
@@ -11,14 +11,16 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { DB } from "../../Data/Firebase";
-import {clientData} from "../../Forms/Client/client";
 
 export default function Cart() {
   const { cart, totalPrice, emptyCart } = useCartContext();
   console.log("carrito con", cart);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
 
   const order = {
-    buyer: 'nadie',
+    buyer: { name, phone, email },
     items: cart.map((data) => ({
       id: data.id,
       title: data.name,
@@ -75,29 +77,65 @@ export default function Cart() {
             </div>
           </div>
           <div className="col-6">
-            <Card>
-              
-            <p>lugar para el form</p>
-            {/* <clientData /> */}
-
-            </Card>
+            <Form style={{ flexDirection: "row" }}>
+              <h5>Datos para la compra:</h5>
+              <div>
+                <label htmlFor="name" className="m-3">
+                  Nombre:{" "}
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={(ev) => setName(ev.target.value)}
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="phone" className="m-3">
+                  Teléfono:{" "}
+                </label>
+                <input
+                  type="number"
+                  name="email"
+                  value={phone}
+                  onChange={(ev) => setPhone(ev.target.value)}
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="email" className="m-3">
+                  E-mail:{" "}
+                </label>
+                <input
+                  type="email"
+                  name="name"
+                  value={email}
+                  onChange={(ev) => setEmail(ev.target.value)}
+                ></input>
+              </div>
+              <Link to={"/"}>
+                <Button
+                  type="submit"
+                  disabled={!name || !phone || !email}
+                  onClick={genOrder}
+                >
+                  Finalizar compra{" "}
+                </Button>
+              </Link>
+            </Form>
           </div>
         </div>
       </div>
       <div>
         <h4 className="cartTotal">Total: ${totalPrice()}</h4>
+      </div>
+      <div>
         <Link to={"/"}>
           <Button>Seguir comprando</Button>
         </Link>
-      </div>
-      <div className="my-3">
-        <Button className="bg-info" onClick={() => emptyCart()}>
+        <Button className="bg-info m-3" onClick={() => emptyCart()}>
           Vaciar carrito
         </Button>
       </div>
-      <Link to={"/"}>
-        <Button onClick={genOrder}>Comprar</Button>
-      </Link>
       <br />
     </div>
   );

@@ -29,20 +29,20 @@ export default function ItemCount({ initial, stock, onAdd }) {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-evenly",
+          justifyContent: "center",
           padding: "10px 0px",
         }}
       >
-        <Button disabled={count<=1}  size="sm" onClick={removeItem}>
+        <Button className="mx-3" disabled={count<=1}  size="sm" onClick={removeItem}>
           -
         </Button>
         {count}
-        <Button disabled={count >=stock} size="sm" onClick={addItem}>
+        <Button  className="mx-3" disabled={count >=stock} size="sm" onClick={addItem}>
           +
         </Button>
       </div>
       <div>
-        <Button disabled={stock <=0} onClick={() => onAdd(count)}>Agregar al carrito</Button>
+        <Button  disabled={stock <=0} onClick={() => onAdd(count)}>Agregar al carrito</Button>
       </div>
     </div>
   );

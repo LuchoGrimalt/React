@@ -27,7 +27,7 @@ export default function ItemDetail({ id, name, img, category, price, stock }) {
     <Card
       className="card mb-6"
       style={{
-        maxWidth: "950px",
+        maxWidth: "auto",
         margin: "12px",
         padding: "8px",
         display: "flex",
@@ -46,9 +46,9 @@ export default function ItemDetail({ id, name, img, category, price, stock }) {
             <Card.Title>
               <div>
                 <h2>{name}</h2>
-                <h6>Categoría: {category}</h6>
-                <h6>precio ${price}</h6>
-                <h6>stock {stock}</h6>
+                <h4>Categoría: {category}</h4>
+                <h4>precio ${price}</h4>
+                <h4>stock {stock}</h4>
                 {toCart ? (
                   <div>
                     <Link to="/cart">
