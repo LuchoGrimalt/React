@@ -22,8 +22,8 @@ export const ItemDetailContainer = () => {
       {data ? (
         <ItemDetail {...data} />
       ) : (
-        <div > 
-        <h6>Cargando producto...</h6> 
+        <div className="m-4"> 
+        <h6 >Cargando producto...</h6> 
         <Spinner animation="border" variant="warning" />
         </div>
       )}

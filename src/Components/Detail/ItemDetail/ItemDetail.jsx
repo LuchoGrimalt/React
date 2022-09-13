@@ -20,7 +20,6 @@ export default function ItemDetail({ id, name, img, category, price, stock }) {
       quantity: quantityCart,
     });
     setToCart(true);
-    console.log(`Se agrego ${quantityCart} ${name} al carrito!`);
   }
 
   return (

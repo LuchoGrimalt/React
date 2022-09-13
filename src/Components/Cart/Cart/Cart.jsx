@@ -8,13 +8,14 @@ import {
   collection,
   doc,
   increment,
+  serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
 import { DB } from "../../Data/Firebase";
+import swal from "sweetalert";
 
 export default function Cart() {
   const { cart, totalPrice, emptyCart } = useCartContext();
-  console.log("carrito con", cart);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -28,12 +29,20 @@ export default function Cart() {
       quantity: data.quantity,
     })),
     total: totalPrice(),
+    date: serverTimestamp()
   };
-  console.log(order);
 
   const genOrder = () => {
     const ordersCollection = collection(DB, "orders");
-    addDoc(ordersCollection, order).then(({ id }) => console.log(id));
+    addDoc(ordersCollection, order).then(({ id }) =>
+    swal ({ 
+      title: "Compra exitosa",
+      text: `Orden de compra con ID: ${id} \n
+      Pronto le llegara un mail con los detalles de la compra\n
+      Gracias por confiar en nosotros!!`,
+      icon: "success",
+      button: "Aceptar",}
+    )) ;
     cart.forEach(async (item) => {
       const itemRef = doc(DB, "products", item.id);
       await updateDoc(itemRef, { stock: increment(-item.quantity) });
@@ -44,9 +53,9 @@ export default function Cart() {
   if (cart.length === 0) {
     return (
       <div>
-        <p>No hay elemetos en el carrito</p>
+        <p className="m-5">No hay elemetos en el carrito</p>
         <Link to="/">
-          <Button>Seguir comprando</Button>
+          <Button className="mb-5">Seguir comprando</Button>
         </Link>
       </div>
     );
