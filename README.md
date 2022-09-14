@@ -10,6 +10,7 @@ Sitio en NETLIFY https://monumental-narwhal-2a14aa.netlify.app/
 
 Demostracion de compra de un producto
 https://github.com/LuchoGrimalt/React/blob/main/public/gif/Gif%20proy.gif
+![Gif proy](https://user-images.githubusercontent.com/96153271/190041721-202cfbaf-dcf9-415f-b0af-cbb1406d1476.gif)
 
 Codeado en VS-Code
 
