@@ -26,7 +26,7 @@ export default function ItemDetail({ id, name, img, category, price, stock }) {
     <Card
       className="card mb-6"
       style={{
-        maxWidth: "auto",
+        maxWidth: "900px",
         margin: "12px",
         padding: "8px",
         display: "flex",
@@ -34,20 +34,16 @@ export default function ItemDetail({ id, name, img, category, price, stock }) {
     >
       <div className="row d-flex align-items-center">
         <div className="col-md-9">
-          <Card.Img
-            src={img}
-            className="img-fluid rounded"
-            variant="top"
-          />{" "}
+          <Card.Img src={img} className="img-fluid rounded" variant="top" />{" "}
         </div>
         <div className="col-md-3">
           <Card.Body>
             <Card.Title>
               <div>
                 <h2>{name}</h2>
-                <h4>Categoría: {category}</h4>
-                <h4>precio ${price}</h4>
-                <h4>stock {stock}</h4>
+                <h6>Categoría: {category}</h6>
+                <h6>precio ${price}</h6>
+                <h6>stock {stock}</h6>
                 {toCart ? (
                   <div>
                     <Link to="/cart">

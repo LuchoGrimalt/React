@@ -15,14 +15,14 @@ export default function ItemCount({ initial, stock, onAdd }) {
       setCount(count - 1);
       setInStock(inStock + 1);
     }
-  };
-  
+  }
+
   function addItem() {
     if (count < stock) {
       setCount(count + 1);
       setInStock(inStock - 1);
     }
-  };
+  }
 
   return (
     <div className="row">
@@ -33,16 +33,28 @@ export default function ItemCount({ initial, stock, onAdd }) {
           padding: "10px 0px",
         }}
       >
-        <Button className="mx-3" disabled={count<=1}  size="sm" onClick={removeItem}>
+        <Button
+          className="mx-3"
+          disabled={count <= 1}
+          size="sm"
+          onClick={removeItem}
+        >
           -
         </Button>
         {count}
-        <Button  className="mx-3" disabled={count >=stock} size="sm" onClick={addItem}>
+        <Button
+          className="mx-3"
+          disabled={count >= stock}
+          size="sm"
+          onClick={addItem}
+        >
           +
         </Button>
       </div>
       <div>
-        <Button  disabled={stock <=0} onClick={() => onAdd(count)}>Agregar al carrito</Button>
+        <Button disabled={stock <= 0} onClick={() => onAdd(count)}>
+          Agregar al carrito
+        </Button>
       </div>
     </div>
   );

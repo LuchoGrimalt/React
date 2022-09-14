@@ -29,20 +29,21 @@ export default function Cart() {
       quantity: data.quantity,
     })),
     total: totalPrice(),
-    date: serverTimestamp()
+    date: serverTimestamp(),
   };
 
   const genOrder = () => {
     const ordersCollection = collection(DB, "orders");
     addDoc(ordersCollection, order).then(({ id }) =>
-    swal ({ 
-      title: "Compra exitosa",
-      text: `Orden de compra con ID: ${id} \n
+      swal({
+        title: "Compra exitosa",
+        text: `Orden de compra con ID: ${id} \n
       Pronto le llegara un mail con los detalles de la compra\n
       Gracias por confiar en nosotros!!`,
-      icon: "success",
-      button: "Aceptar",}
-    )) ;
+        icon: "success",
+        button: "Aceptar",
+      })
+    );
     cart.forEach(async (item) => {
       const itemRef = doc(DB, "products", item.id);
       await updateDoc(itemRef, { stock: increment(-item.quantity) });
@@ -123,6 +124,7 @@ export default function Cart() {
               </div>
               <Link to={"/"}>
                 <Button
+                  className="bg-success btn-lg"
                   type="submit"
                   disabled={!name || !phone || !email}
                   onClick={genOrder}
@@ -141,7 +143,7 @@ export default function Cart() {
         <Link to={"/"}>
           <Button>Seguir comprando</Button>
         </Link>
-        <Button className="bg-info m-3" onClick={() => emptyCart()}>
+        <Button className="bg-danger m-3" onClick={() => emptyCart()}>
           Vaciar carrito
         </Button>
       </div>

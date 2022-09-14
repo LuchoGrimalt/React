@@ -1,6 +1,6 @@
 import "./style.css";
 import { BsMinecart } from "react-icons/bs";
-import { Button } from "react-bootstrap";
+import { Badge, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React from "react";
 import { useCartContext } from "../../Cart/CartContext/CartContext";
@@ -10,9 +10,9 @@ export default function CartWidget() {
   return (
     <div>
       <Button className="iconCart d-flex-row p-1" variant="warning">
-        <div className="enCarrito mx-1">
+        <Badge className="bg-warning">
           {totalProd !== 0 ? totalProd() : ""}
-        </div>
+        </Badge>
         <div>
           <Link to="/Cart">
             <BsMinecart

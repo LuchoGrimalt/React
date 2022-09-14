@@ -7,6 +7,7 @@ import ItemDetailContainer from "./Components/Detail/ItemDetailContainer/ItemDet
 import { CartProvider } from "./Components/Cart/CartContext/CartContext";
 import Cart from "./Components/Cart/Cart/Cart";
 import ItemListContainer from "./Components/List/ItemListContainer/ItemListContainer";
+import Footer from "./Components/Footer/Footer";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             />
             <Route path="/cart" element={<Cart />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </CartProvider>
     </div>

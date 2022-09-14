@@ -11,8 +11,10 @@ function Carrousel() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Aprovecha nuestras ofertas de primavera!!</h3>
+          <p>
+            Se viene la mejor temporada para salir a jugar, hacelo con estilo.
+          </p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -23,8 +25,8 @@ function Carrousel() {
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Hasta un 50% de descuento </h3>
+          <p>En productos seleccionados.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -35,10 +37,8 @@ function Carrousel() {
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>Guadapulpe te ofrece accesorios originales</h3>
+          <p>Nuestros accesorios son más que eso, son hermosuras!</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

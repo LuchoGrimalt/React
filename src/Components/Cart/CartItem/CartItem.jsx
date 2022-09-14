@@ -9,19 +9,15 @@ const CartItem = ({ id, quantity, name, img, price }) => {
     <Card
       className="card mb-3"
       style={{
-        maxWidth: "500px",
+        maxWidth: "auto",
         margin: "10px",
       }}
     >
       <div className="row g-0  d-flex align-items-center">
         <div className="col-md-4">
-          <Card.Img
-            src={img}
-            className="img-fluid rounded mx-2"
-            variant="top"
-          />{" "}
+          <Card.Img src={img} className="img-fluid rounded" variant="top" />{" "}
         </div>
-        <div className="col-md-8 align-items-center">
+        <div className="col-md-8">
           <Card.Body>
             <Card.Title>
               <div>

@@ -18,13 +18,13 @@ export const ItemDetailContainer = () => {
   }, [detailId]);
 
   return (
-    <div >
+    <div className="d-flex justify-content-center">
       {data ? (
         <ItemDetail {...data} />
       ) : (
-        <div className="m-4"> 
-        <h6 >Cargando producto...</h6> 
-        <Spinner animation="border" variant="warning" />
+        <div className="m-4">
+          <h6>Cargando producto...</h6>
+          <Spinner animation="border" variant="warning" />
         </div>
       )}
     </div>
