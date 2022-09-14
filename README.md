@@ -9,6 +9,7 @@ E-commerce de indumentaria infantil con listado principal de artículos y posibi
 Sitio en NETLIFY https://monumental-narwhal-2a14aa.netlify.app/
 
 Demostracion de compra de un producto
+https://github.com/LuchoGrimalt/React/blob/main/public/gif/Gif%20proy.gif
 
 Codeado en VS-Code
 
